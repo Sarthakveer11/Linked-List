@@ -137,15 +137,25 @@ void delete_at_end()
     }
     else
     {
-        p=start;
-        while(p->next!=NULL)
+        if(start->next==NULL)
         {
+            p=start;
+            start=NULL;
+            printf("%d is Deleted.",p->data);
+            free(p);
+        }
+        else
+        {
+           p=start;
+           while(p->next!=NULL)
+          {
             q=p;
             p=p->next;
+          }
+          q->next=NULL;
+          printf("%d is Deleted.",p->data);
+          free(p);
         }
-        q->next=NULL;
-        printf("%d is Deleted.",p->data);
-        free(p);
     }
 }
 void delete_at_given_location()
@@ -235,4 +245,5 @@ int main()
     }
     }while(n!=8);
    return 0; 
+
 }
